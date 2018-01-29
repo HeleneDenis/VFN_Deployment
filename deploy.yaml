@@ -1,0 +1,15 @@
+- name: Deploy on OpenStack
+  hosts: localhost
+  gather_facts: false
+  tasks:
+  - name: Deploy an instance
+    os_server:
+      state: present
+      name: webserver
+      image: CentOS-6-x86_64-GenericCloud-1704 
+      wait: yes
+      flavor: m1.small
+      auto_floating_ip: yes
+      network: MNGT 
+      meta:
+        hostname: webserver.localdomain
